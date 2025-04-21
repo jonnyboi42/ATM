@@ -1,0 +1,42 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String    @id @default(uuid())
+  email     String    @unique
+  password  String
+  name      String
+  role      String    @default("user")
+  createdAt DateTime  @default(now())
+
+  accounts  Account[]  // One user can have multiple accounts
+}
+
+model Account {
+  id          String         @id @default(uuid()) 
+  userId      String
+  accountType String         // "savings" or "checking"
+  accountNumber String     //New Column For account number (nullable for existing data)
+  balance     Decimal        @db.Decimal(10, 2)  // Adjusted for currency with 2 decimal places
+  createdAt   DateTime       @default(now())
+
+  user        User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  transactions Transaction[] // One account can have multiple transactions
+}
+
+
+model Transaction {
+  id          String   @id @default(uuid()) 
+  accountId   String   // Foreign key to Account
+  type        String   // "deposit" or "withdrawal"
+  amount      Decimal @db.Decimal(10,2)
+  createdAt   DateTime @default(now())
+
+  account     Account  @relation(fields: [accountId], references: [id], onDelete: Cascade)
+}
