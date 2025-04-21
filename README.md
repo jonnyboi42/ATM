@@ -1,4 +1,4 @@
-# ATM App (Practice Project)
+# ATM App (Project)
 
 This application was built as a personal learning project to gain hands-on experience with:
 
@@ -7,6 +7,7 @@ This application was built as a personal learning project to gain hands-on exper
 - **Prisma** and **PostgreSQL** for database interactions
 - **Next.js** for the fullstack React framework
 - **Tailwind CSS** for styling
+- **Typescript** for type checking
 
 It simulates a real-world application with:
 
