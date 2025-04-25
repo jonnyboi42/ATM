@@ -56,7 +56,7 @@ const DepositPage = () => {
       if (response.ok) {
         const data = await response.json();
         alert("Deposit successful!");
-        router.push("/dashboards/normaluser");
+        router.push("/dashboards/normalUser");
       } else {
         const errorData = await response.json();
         alert(errorData.error);
