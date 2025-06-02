@@ -3,7 +3,7 @@
 import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import TransactionButton from "../../components/TransactionButton";
+import TransactionButton from "@/app/components/buttons/TransactionButton";
 import Header from "@/app/components/Header";
 
 export default function Dash() {

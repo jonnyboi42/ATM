@@ -5,6 +5,7 @@
 import { useSearchParams, useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
+import TransactionCancelButton from "@/app/components/buttons/TransactionCancelButton";
 
 interface Account {
   id: string;
@@ -172,12 +173,14 @@ const Transfer = () => {
             {loading ? "Processing..." : "Transfer"}
           </button>
 
-          <button
-            onClick={() => router.push("/dashboard")}
+          {/* <button
+            onClick={() => router.push("/dashboards/normalUser")}
             className="w-full py-3 text-lg font-semibold text-gray-800 border border-gray-300 rounded-md hover:bg-gray-100 transition duration-300"
           >
             Cancel
           </button>
+           */}
+          <TransactionCancelButton />
         </div>
       </div>
     </div>
